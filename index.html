@@ -1,38 +1,155 @@
-<!doctype html><html lang="th"><head>
+<!doctype html>
+<html lang="th">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NongkhaiTravel.com</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="icon" href="data:,">
+<style>
+  :root { color-scheme: light; }
+  body {
+    font-family: 'IBM Plex Sans Thai', 'Noto Sans Thai', 'Sarabun', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f6f3ed;
+  }
+  .mekong-line {
+    height: 3px;
+    background-image: linear-gradient(90deg, rgba(14,165,233,0.9) 0%, rgba(14,165,233,0.9) 24%, transparent 24%, transparent 50%),
+                      linear-gradient(90deg, rgba(14,116,144,0.18) 0%, rgba(14,116,144,0.18) 50%, transparent 50%, transparent 100%);
+    background-size: 28px 3px, 56px 3px;
+    border-radius: 9999px;
+  }
+  .naga-pin {
+    position: relative;
+    padding-left: 1.75rem;
+  }
+  .naga-pin::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: 1.05rem;
+    height: 1.05rem;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 30%, rgba(14,165,233,0.85) 0%, rgba(14,116,144,1) 65%, rgba(14,165,233,0.4) 100%);
+    box-shadow: 0 0 0 3px rgba(14,165,233,0.12);
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-left: 1px solid rgba(15,118,110,0.25);
+    pointer-events: none;
+  }
+</style>
 </head>
-<body class="bg-sky-50 text-slate-800">
-<header class="bg-white shadow"><div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-  <h1 class="text-xl md:text-2xl font-bold">NongkhaiTravel.com</h1>
-  <nav class="space-x-4 text-sm">
-    <a href="./index.html" class="hover:underline">หน้าแรก</a>
-    <a href="./places.html" class="hover:underline">สถานที่ท่องเที่ยว</a>
-    <a href="./about.html" class="hover:underline">เกี่ยวกับจังหวัด</a>
-    <a href="./contact.html" class="hover:underline">ติดต่อเรา</a>
-    <a href="./admin.html" class="hover:underline">Admin</a>
-  </nav>
-</div></header>
-<main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
-  <section class="text-center"><h2 class="text-2xl font-bold">เที่ยวหนองคาย ง่ายในเว็บเดียว</h2>
-    <p class="text-slate-600 mt-2">รวมไฮไลต์สถานที่ท่องเที่ยว แผนที่ และข้อมูลสำคัญสำหรับนักท่องเที่ยว</p>
+<body class="text-slate-800">
+<header class="border-b border-slate-200/70 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between">
+    <div>
+      <a href="./index.html" class="text-lg font-semibold tracking-tight text-slate-900 md:text-xl">NongkhaiTravel.com</a>
+      <p class="mt-1 text-sm text-slate-500">คู่มือเที่ยวหนองคายที่เรียบง่ายและจริงใจ</p>
+    </div>
+    <nav class="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+      <a href="./index.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">หน้าแรก</a>
+      <a href="./places.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">สถานที่ท่องเที่ยว</a>
+      <a href="./about.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">เกี่ยวกับจังหวัด</a>
+      <a href="./contact.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">ติดต่อเรา</a>
+      <a href="./admin.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">Admin</a>
+    </nav>
+  </div>
+  <div class="mekong-line"></div>
+</header>
+
+<main class="mx-auto flex max-w-5xl flex-col gap-16 px-4 py-12">
+  <section class="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-start">
+    <div class="space-y-6">
+      <div class="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-teal-700">NONG KHAI</div>
+      <h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-4xl">เส้นทางเที่ยวเมืองหนองคายในโทนมินิมอล</h1>
+      <p class="text-base leading-relaxed text-slate-600 md:text-lg">เราคัดสรรบรรยากาศริมโขง วัดเก่าแก่ และมุมเดินเล่นเบาๆ พร้อมเรื่องราวของเมืองหนองคายตั้งแต่สมัยเป็นศูนย์กลางการค้าริมฝั่งโขง ไปจนถึงปัจจุบันที่ยังคงหลอมรวมวัฒนธรรมไทย–ลาวอย่างมีเสน่ห์</p>
+      <div class="flex flex-wrap gap-3 text-sm text-slate-600">
+        <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 font-medium"><span class="h-2 w-2 rounded-full bg-teal-500"></span>เสน่ห์แม่น้ำโขง</span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 font-medium"><span class="h-2 w-2 rounded-full bg-amber-500"></span>รอยยิ้มอีสาน</span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 font-medium"><span class="h-2 w-2 rounded-full bg-slate-400"></span>เมืองเก่ามีชีวิต</span>
+      </div>
+    </div>
+    <div class="relative rounded-3xl border border-slate-200/70 bg-white p-8">
+      <div class="absolute right-6 top-6 h-16 w-16 rounded-full border border-teal-200/60" aria-hidden="true"></div>
+      <div class="absolute -left-5 bottom-8 hidden h-10 w-10 rounded-full bg-amber-200/70 blur-xl md:block" aria-hidden="true"></div>
+      <div class="space-y-4 text-sm leading-relaxed text-slate-600">
+        <h2 class="text-lg font-semibold text-slate-800">กิมมิกเล็กๆ: ลายเกลียวพญานาค</h2>
+        <p>บนเว็บไซต์เราจึงใช้จุดกลมเล็กๆ และเส้นยาวคล้ายเกลียว เพื่อชวนให้นึกถึงตำนานพญานาคที่ชาวหนองคายผูกพัน พร้อมเล่าเรื่องเมืองผ่านโทนสีกลมกลืนกับสายน้ำโขง</p>
+        <p class="rounded-2xl border border-dashed border-teal-200/70 bg-teal-50/60 p-4 text-slate-700">“หนองคายเป็นมากกว่าจุดผ่านแดน เป็นเมืองที่เรื่องเล่าของชุมชนท้องน้ำและศรัทธายังคงไหลเวียนทุกวัน”</p>
+        <a href="#history" class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 underline underline-offset-4">อ่านประวัติเมืองแบบย่อ</a>
+      </div>
+    </div>
   </section>
-  <section><h3 class="text-lg font-semibold mb-3">ไฮไลต์</h3><div id="featured" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div></section>
+
+  <section class="space-y-8">
+    <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="text-2xl font-semibold text-slate-900">เลือกชมสถานที่เด่น</h2>
+        <p class="text-sm text-slate-500">หยิบยกสถานที่ขึ้นชื่อจากฐานข้อมูลของเรา 4 แห่งเพื่อเริ่มต้นวางแผน</p>
+      </div>
+      <a href="./places.html" class="text-sm font-medium text-teal-700 underline underline-offset-4">ดูทั้งหมด</a>
+    </div>
+    <div id="featured" class="grid gap-4 sm:grid-cols-2"></div>
+  </section>
+
+  <section id="history" class="space-y-8">
+    <div class="space-y-2">
+      <h2 class="text-2xl font-semibold text-slate-900">ประวัติหนองคายฉบับย่อ</h2>
+      <p class="text-sm text-slate-500">เรียบเรียงเพื่อให้เห็นพัฒนาการของเมืองริมน้ำที่ผูกพันกับวัฒนธรรมไทย–ลาวและแม่น้ำโขง</p>
+    </div>
+    <div class="relative timeline rounded-3xl border border-slate-200/70 bg-white px-6 py-10">
+      <div class="grid gap-8">
+        <article class="naga-pin">
+          <h3 class="text-lg font-semibold text-slate-800">พ.ศ. 2364 – ตั้งเมืองหนองคาย</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">รัชกาลที่ 2 โปรดให้ตั้งเมืองหนองคายเป็นเมืองหน้าด่าน รับบทบาทดูแลหัวเมืองลาวฝั่งแม่น้ำโขง ทำให้พื้นที่นี้เป็นชุมทางการค้าสำคัญ</p>
+        </article>
+        <article class="naga-pin">
+          <h3 class="text-lg font-semibold text-slate-800">พ.ศ. 2436 – รอยต่อการค้าในยุคสยามใหม่</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">หลังวิกฤต ร.ศ. 112 หนองคายยังคงเป็นศูนย์กลางชุมชนไทย–ลาว ผู้คนสองฝั่งโขงแลกเปลี่ยนสินค้าทางเรือและทางบกอย่างต่อเนื่อง</p>
+        </article>
+        <article class="naga-pin">
+          <h3 class="text-lg font-semibold text-slate-800">พ.ศ. 2537 – สะพานมิตรภาพไทย–ลาว แห่งที่ 1</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">สะพานข้ามโขงแห่งแรกเชื่อมเมืองหนองคายกับนครหลวงเวียงจันทน์ เปิดประตูการเดินทางและการท่องเที่ยวระหว่างประเทศได้สะดวกขึ้น</p>
+        </article>
+        <article class="naga-pin">
+          <h3 class="text-lg font-semibold text-slate-800">ปัจจุบัน – เมืองวัฒนธรรมริมโขง</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">ด้วยเทศกาลบั้งไฟพญานาค ถนนคนเดินริมโขง และชุมชนสร้างสรรค์ หนองคายยังคงมีชีวิตชีวาและพร้อมต้อนรับนักเดินทางด้วยความอบอุ่น</p>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="text-center text-xs text-slate-500 py-8">© NongkhaiTravel.com</footer>
+
+<footer class="border-t border-slate-200/70 bg-white/80 py-8 text-center text-xs text-slate-500">© NongkhaiTravel.com — คู่มือเที่ยวหนองคายแบบเรียบง่าย</footer>
+
 <script>
 async function loadFeatured(){
-  const res = await fetch('./data/places.json'); const places = await res.json();
-  const pick = places.slice(0,6); const el = document.getElementById('featured');
-  el.innerHTML = pick.map(p => `
-    <a href="./place.html?id=${p.id}" class="block bg-white rounded-2xl shadow hover:shadow-md transition p-4">
-      <div class="aspect-video bg-slate-200 rounded-xl mb-3 overflow-hidden"><img src="${p.image}" alt="${p.name_th}" class="w-full h-full object-cover"></div>
-      <div class="font-semibold">${p.name_th}</div>
-      <div class="text-sm text-slate-600 line-clamp-2">${p.desc}</div>
-    </a>`).join('');
+  try {
+    const res = await fetch('./data/places.json');
+    const places = await res.json();
+    const pick = places.slice(0, 4);
+    const el = document.getElementById('featured');
+    el.innerHTML = pick.map(p => `
+      <a href="./place.html?id=${p.id}" class="group flex flex-col gap-3 rounded-2xl border border-slate-200/80 bg-white/80 p-5 transition hover:border-teal-300">
+        <div class="aspect-video w-full overflow-hidden rounded-xl bg-slate-200">
+          <img src="${p.image}" alt="${p.name_th}" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy">
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-lg font-semibold text-slate-800">${p.name_th}</h3>
+          <p class="text-xs font-medium text-teal-600">อ.${p.district} จังหวัดหนองคาย</p>
+          <p class="text-sm leading-relaxed text-slate-600">${p.desc}</p>
+        </div>
+      </a>
+    `).join('');
+  } catch (error) {
+    console.error('ไม่สามารถโหลดข้อมูลสถานที่ได้', error);
+  }
 }
 loadFeatured();
-</script></body></html>
+</script>
+</body>
+</html>

@@ -1,35 +1,80 @@
-<!doctype html><html lang="th"><head>
+<!doctype html>
+<html lang="th">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NongkhaiTravel.com</title>
+<title>ติดต่อทีมงาน | NongkhaiTravel.com</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="icon" href="data:,">
+<style>
+  :root { color-scheme: light; }
+  body {
+    font-family: 'IBM Plex Sans Thai', 'Noto Sans Thai', 'Sarabun', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f6f3ed;
+  }
+  .mekong-line {
+    height: 3px;
+    background-image: linear-gradient(90deg, rgba(14,165,233,0.9) 0%, rgba(14,165,233,0.9) 24%, transparent 24%, transparent 50%),
+                      linear-gradient(90deg, rgba(14,116,144,0.15) 0%, rgba(14,116,144,0.15) 50%, transparent 50%, transparent 100%);
+    background-size: 28px 3px, 56px 3px;
+    border-radius: 9999px;
+  }
+</style>
 </head>
-<body class="bg-sky-50 text-slate-800">
-<header class="bg-white shadow"><div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-  <h1 class="text-xl md:text-2xl font-bold">ติดต่อเรา</h1>
-  <nav class="space-x-4 text-sm">
-    <a href="./index.html" class="hover:underline">หน้าแรก</a>
-    <a href="./places.html" class="hover:underline">สถานที่ท่องเที่ยว</a>
-    <a href="./about.html" class="hover:underline">เกี่ยวกับจังหวัด</a>
-    <a href="./contact.html" class="hover:underline">ติดต่อเรา</a>
-  </nav>
-</div></header>
-<main class="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
-  <div class="bg-white rounded-2xl shadow p-6">
-    <h2 class="text-lg font-semibold mb-3">ทีมงาน NongkhaiTravel</h2>
-    <p class="text-sm">อีเมล: example@nongkhaitravel.com</p>
-    <p class="text-sm">โทร: 0-0000-0000</p>
-    <form class="mt-4 space-y-3" onsubmit="alert('ฟอร์มตัวอย่างสำหรับ GitHub Pages'); return false;">
-      <input class="w-full border rounded px-3 py-2" placeholder="ชื่อของคุณ" required>
-      <input type="email" class="w-full border rounded px-3 py-2" placeholder="อีเมล (ถ้ามี)">
-      <textarea class="w-full border rounded px-3 py-2" rows="4" placeholder="ข้อความถึงทีมงาน" required></textarea>
-      <button class="px-4 py-2 rounded bg-indigo-600 text-white">ส่งข้อความ</button>
+<body class="text-slate-800">
+<header class="border-b border-slate-200/70 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between">
+    <div>
+      <a href="./index.html" class="text-lg font-semibold tracking-tight text-slate-900 md:text-xl">NongkhaiTravel.com</a>
+      <p class="mt-1 text-sm text-slate-500">ติดต่อทีมงานคนรักเมืองหนองคาย</p>
+    </div>
+    <nav class="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+      <a href="./index.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">หน้าแรก</a>
+      <a href="./places.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">สถานที่ท่องเที่ยว</a>
+      <a href="./about.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">เกี่ยวกับจังหวัด</a>
+      <a href="./contact.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">ติดต่อเรา</a>
+      <a href="./admin.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">Admin</a>
+    </nav>
+  </div>
+  <div class="mekong-line"></div>
+</header>
+
+<main class="mx-auto max-w-6xl gap-8 px-4 py-12 md:grid md:grid-cols-[1.05fr_0.95fr]">
+  <section class="space-y-6 rounded-3xl border border-slate-200/70 bg-white p-8">
+    <h1 class="text-3xl font-semibold text-slate-900">ส่งข้อความถึงเรา</h1>
+    <p class="text-sm leading-relaxed text-slate-600">มีคำถามเกี่ยวกับสถานที่ ประวัติเมือง หรือข้อเสนอแนะเพื่อทำให้คู่มือดียิ่งขึ้น? เขียนถึงเราได้เลย ทีมงานจะตอบกลับภายใน 3 วันทำการ</p>
+    <form class="space-y-4" onsubmit="alert('ฟอร์มตัวอย่างสำหรับ GitHub Pages'); return false;">
+      <div>
+        <label class="text-sm font-medium text-slate-700">ชื่อของคุณ</label>
+        <input class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm focus:border-teal-400 focus:outline-none" placeholder="ชื่อและนามสกุล" required>
+      </div>
+      <div>
+        <label class="text-sm font-medium text-slate-700">อีเมล (ถ้ามี)</label>
+        <input type="email" class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm focus:border-teal-400 focus:outline-none" placeholder="example@email.com">
+      </div>
+      <div>
+        <label class="text-sm font-medium text-slate-700">ข้อความ</label>
+        <textarea class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm focus:border-teal-400 focus:outline-none" rows="5" placeholder="อยากให้เราแนะนำอะไรเพิ่มเติม" required></textarea>
+      </div>
+      <button class="rounded-full bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700">ส่งข้อความ</button>
     </form>
-  </div>
-  <div class="bg-white rounded-2xl shadow overflow-hidden">
-    <iframe src="https://www.google.com/maps?q=ริมโขง หนองคาย&output=embed" width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </div>
+    <div class="rounded-2xl border border-dashed border-teal-200/70 bg-teal-50/60 p-4 text-sm text-slate-600">
+      ทีมงานตั้งอยู่ในตัวเมืองหนองคาย หากต้องการพบปะพูดคุยสามารถนัดหมายล่วงหน้าผ่านอีเมลได้เช่นกัน
+    </div>
+  </section>
+  <aside class="mt-10 space-y-4 md:mt-0">
+    <div class="rounded-3xl border border-slate-200/70 bg-white p-6">
+      <h2 class="text-lg font-semibold text-slate-800">ข้อมูลติดต่อ</h2>
+      <p class="mt-2 text-sm text-slate-600">อีเมล: example@nongkhaitravel.com</p>
+      <p class="text-sm text-slate-600">โทรศัพท์: 0-0000-0000</p>
+      <p class="mt-4 text-sm text-slate-500">(ข้อมูลตัวอย่างสำหรับเว็บไซต์ Static)</p>
+    </div>
+    <div class="rounded-3xl border border-slate-200 overflow-hidden">
+      <iframe src="https://www.google.com/maps?q=ริมโขง%20หนองคาย&output=embed" width="100%" height="420" style="border:0;" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </aside>
 </main>
-<footer class="text-center text-xs text-slate-500 py-8">© NongkhaiTravel.com</footer>
-</body></html>
+
+<footer class="border-t border-slate-200/70 bg-white/80 py-8 text-center text-xs text-slate-500">© NongkhaiTravel.com — ติดต่อทีมงานคนหนองคาย</footer>
+</body>
+</html>

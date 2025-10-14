@@ -4,6 +4,7 @@
     "name_th": "วัดโพธิ์ชัย",
     "desc": "วัดสำคัญคู่เมืองหนองคาย ประดิษฐานหลวงพ่อพระใส",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "เมืองหนองคาย",
     "maps_embed": "https://www.google.com/maps?q=วัดโพธิ์ชัย หนองคาย&output=embed"
   },
   {
@@ -11,6 +12,7 @@
     "name_th": "ศาลาแก้วกู่",
     "desc": "สวนประติมากรรมคอนกรีตขนาดใหญ่ จุดถ่ายรูปยอดนิยม",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "เมืองหนองคาย",
     "maps_embed": "https://www.google.com/maps?q=ศาลาแก้วกู่ หนองคาย&output=embed"
   },
   {
@@ -18,6 +20,7 @@
     "name_th": "ถนนคนเดินริมโขง (Walking Street)",
     "desc": "ถนนคนเดินยามเย็น ร้านอาหาร ของฝาก และดนตรีสด",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "เมืองหนองคาย",
     "maps_embed": "https://www.google.com/maps?q=ถนนคนเดิน หนองคาย&output=embed"
   },
   {
@@ -25,6 +28,7 @@
     "name_th": "ลานวัฒนธรรมวัดลำดวน",
     "desc": "ลานกิจกรรมชุมชน ใกล้ริมโขง บรรยากาศท้องถิ่น",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "เมืองหนองคาย",
     "maps_embed": "https://www.google.com/maps?q=วัดลำดวน หนองคาย&output=embed"
   },
   {
@@ -32,6 +36,7 @@
     "name_th": "สวนสาธารณะหนองถิ่น",
     "desc": "พื้นที่พักผ่อนออกกำลังกายของคนท้องถิ่น",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "เมืองหนองคาย",
     "maps_embed": "https://www.google.com/maps?q=สวนสาธารณะ หนองคาย&output=embed"
   },
   {
@@ -39,6 +44,7 @@
     "name_th": "พิพิธภัณฑ์ต้านภัยพิบัติน้ำหนองคาย",
     "desc": "แหล่งเรียนรู้เรื่องน้ำและการจัดการน้ำของจังหวัด",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "เมืองหนองคาย",
     "maps_embed": "https://www.google.com/maps?q=พิพิธภัณฑ์น้ำ หนองคาย&output=embed"
   },
   {
@@ -46,6 +52,7 @@
     "name_th": "สะพานมิตรภาพไทย-ลาว แห่งที่ 1",
     "desc": "แลนด์มาร์คข้ามฝั่งโขง เชื่อมไทย-ลาว",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "เมืองหนองคาย",
     "maps_embed": "https://www.google.com/maps?q=สะพานมิตรภาพไทยลาว หนองคาย&output=embed"
   },
   {
@@ -53,6 +60,7 @@
     "name_th": "นักท่องเที่ยวปากอ่าว (พื้นที่นกอพยพ)",
     "desc": "จุดชมธรรมชาติและนกอพยพตามฤดูกาล (ใส่พิกัดจริงภายหลัง)",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "โพนพิสัย",
     "maps_embed": "https://www.google.com/maps?q=หนองคาย จุดชมนก&output=embed"
   },
   {
@@ -60,6 +68,7 @@
     "name_th": "วัดผาตากเสื้อ (Skywalk)",
     "desc": "สกายวอล์ควิวแม่น้ำโขงมุมสูง ชมทะเลหมอกฤดูหนาว",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "สังคม",
     "maps_embed": "https://www.google.com/maps?q=วัดผาตากเสื้อ&output=embed"
   },
   {
@@ -67,6 +76,7 @@
     "name_th": "อนุสาวรีย์ปราบฮ่อ (แสง สี เสียง)",
     "desc": "เรียนรู้ประวัติศาสตร์เมืองหนองคาย พร้อมการแสดงแสงสีเสียง (ตามรอบกิจกรรม)",
     "image": "assets/img/wat-placeholder.jpg",
+    "district": "เมืองหนองคาย",
     "maps_embed": "https://www.google.com/maps?q=อนุสาวรีย์ปราบฮ่อ หนองคาย&output=embed"
   }
 ]
