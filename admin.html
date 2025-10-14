@@ -1,0 +1,38 @@
+<!doctype html><html lang="th"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NongkhaiTravel.com</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" href="data:,">
+</head>
+<body class="bg-sky-50 text-slate-800">
+<header class="bg-white shadow"><div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+  <h1 class="text-xl md:text-2xl font-bold">Admin (ออฟไลน์สำหรับ GitHub Pages)</h1>
+  <nav class="space-x-4 text-sm">
+    <a href="./index.html" class="hover:underline">หน้าแรก</a>
+    <a href="./places.html" class="hover:underline">สถานที่ท่องเที่ยว</a>
+  </nav>
+</div></header>
+<main class="max-w-6xl mx-auto px-4 py-8 space-y-6">
+  <div class="bg-white rounded-2xl shadow p-6">
+    <p class="text-sm mb-3">GitHub Pages เป็นโฮสติ้งแบบ Static จึงไม่มีฐานข้อมูล/เซิร์ฟเวอร์หน้า admin นี้ใช้แก้ไขไฟล์ <b>data/places.json</b> แล้วดาวน์โหลดไป commit</p>
+    <div class="flex gap-3 items-center"><input type="file" id="file" accept="application/json"><button onclick="save()" class="px-4 py-2 rounded bg-indigo-600 text-white">บันทึกเป็น places.json</button></div>
+    <textarea id="editor" class="w-full h-96 border rounded-xl p-3 mt-3 font-mono text-sm"></textarea>
+    <p class="text-xs text-slate-500 mt-2">TIP: หากไม่อัปโหลดไฟล์ ระบบจะโหลดไฟล์ data/places.json อัตโนมัติ</p>
+  </div>
+</main>
+<footer class="text-center text-xs text-slate-500 py-8">© NongkhaiTravel.com</footer>
+<script>
+async function init(){
+  try{ const res=await fetch('./data/places.json'); const json=await res.json(); editor.value=JSON.stringify(json,null,2); }
+  catch(e){ editor.value='[]'; }
+}
+file.onchange = async () => { const txt = await file.files[0].text(); editor.value = txt; };
+function save(){
+  const blob = new Blob([editor.value], {type:'application/json'});
+  const url = URL.createObjectURL(blob); const a=document.createElement('a');
+  a.href=url; a.download='places.json'; a.click(); URL.revokeObjectURL(url);
+}
+init();
+</script>
+</body></html>

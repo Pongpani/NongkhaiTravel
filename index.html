@@ -1,0 +1,38 @@
+<!doctype html><html lang="th"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NongkhaiTravel.com</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" href="data:,">
+</head>
+<body class="bg-sky-50 text-slate-800">
+<header class="bg-white shadow"><div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+  <h1 class="text-xl md:text-2xl font-bold">NongkhaiTravel.com</h1>
+  <nav class="space-x-4 text-sm">
+    <a href="./index.html" class="hover:underline">หน้าแรก</a>
+    <a href="./places.html" class="hover:underline">สถานที่ท่องเที่ยว</a>
+    <a href="./about.html" class="hover:underline">เกี่ยวกับจังหวัด</a>
+    <a href="./contact.html" class="hover:underline">ติดต่อเรา</a>
+    <a href="./admin.html" class="hover:underline">Admin</a>
+  </nav>
+</div></header>
+<main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
+  <section class="text-center"><h2 class="text-2xl font-bold">เที่ยวหนองคาย ง่ายในเว็บเดียว</h2>
+    <p class="text-slate-600 mt-2">รวมไฮไลต์สถานที่ท่องเที่ยว แผนที่ และข้อมูลสำคัญสำหรับนักท่องเที่ยว</p>
+  </section>
+  <section><h3 class="text-lg font-semibold mb-3">ไฮไลต์</h3><div id="featured" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div></section>
+</main>
+<footer class="text-center text-xs text-slate-500 py-8">© NongkhaiTravel.com</footer>
+<script>
+async function loadFeatured(){
+  const res = await fetch('./data/places.json'); const places = await res.json();
+  const pick = places.slice(0,6); const el = document.getElementById('featured');
+  el.innerHTML = pick.map(p => `
+    <a href="./place.html?id=${p.id}" class="block bg-white rounded-2xl shadow hover:shadow-md transition p-4">
+      <div class="aspect-video bg-slate-200 rounded-xl mb-3 overflow-hidden"><img src="${p.image}" alt="${p.name_th}" class="w-full h-full object-cover"></div>
+      <div class="font-semibold">${p.name_th}</div>
+      <div class="text-sm text-slate-600 line-clamp-2">${p.desc}</div>
+    </a>`).join('');
+}
+loadFeatured();
+</script></body></html>
