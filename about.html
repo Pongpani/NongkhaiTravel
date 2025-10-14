@@ -1,26 +1,112 @@
-<!doctype html><html lang="th"><head>
+<!doctype html>
+<html lang="th">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NongkhaiTravel.com</title>
+<title>เกี่ยวกับจังหวัดหนองคาย | NongkhaiTravel.com</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="icon" href="data:,">
+<style>
+  :root { color-scheme: light; }
+  body {
+    font-family: 'IBM Plex Sans Thai', 'Noto Sans Thai', 'Sarabun', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f6f3ed;
+  }
+  .mekong-line {
+    height: 3px;
+    background-image: linear-gradient(90deg, rgba(13,148,136,0.9) 0%, rgba(13,148,136,0.9) 24%, transparent 24%, transparent 50%),
+                      linear-gradient(90deg, rgba(13,148,136,0.15) 0%, rgba(13,148,136,0.15) 50%, transparent 50%, transparent 100%);
+    background-size: 28px 3px, 56px 3px;
+    border-radius: 9999px;
+  }
+</style>
 </head>
-<body class="bg-sky-50 text-slate-800">
-<header class="bg-white shadow"><div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-  <h1 class="text-xl md:text-2xl font-bold">เกี่ยวกับจังหวัดหนองคาย</h1>
-  <nav class="space-x-4 text-sm">
-    <a href="./index.html" class="hover:underline">หน้าแรก</a>
-    <a href="./places.html" class="hover:underline">สถานที่ท่องเที่ยว</a>
-    <a href="./about.html" class="hover:underline">เกี่ยวกับจังหวัด</a>
-    <a href="./contact.html" class="hover:underline">ติดต่อเรา</a>
-  </nav>
-</div></header>
-<main class="max-w-6xl mx-auto px-4 py-8 space-y-4">
-  <div class="bg-white rounded-2xl shadow p-6">
-    <p class="text-sm leading-7">จังหวัดหนองคาย ตั้งอยู่ริมฝั่งแม่น้ำโขง เป็นประตูสู่อินโดจีน
-    มีแหล่งท่องเที่ยวทางธรรมชาติ วัฒนธรรม และประวัติศาสตร์มากมาย เช่น วัดโพธิ์ชัย ศาลาแก้วกู่ และสะพานมิตรภาพไทย–ลาว แห่งที่ 1
-    เว็บไซต์นี้จัดทำขึ้นเพื่อรวบรวมข้อมูลท่องเที่ยวที่เป็นประโยชน์ ช่วยให้นักท่องเที่ยววางแผนการเดินทางได้สะดวกยิ่งขึ้น</p>
+<body class="text-slate-800">
+<header class="border-b border-slate-200/70 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between">
+    <div>
+      <a href="./index.html" class="text-lg font-semibold tracking-tight text-slate-900 md:text-xl">NongkhaiTravel.com</a>
+      <p class="mt-1 text-sm text-slate-500">เมืองริมโขงที่สะท้อนเรื่องราวไทย–ลาว</p>
+    </div>
+    <nav class="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+      <a href="./index.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">หน้าแรก</a>
+      <a href="./places.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">สถานที่ท่องเที่ยว</a>
+      <a href="./about.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">เกี่ยวกับจังหวัด</a>
+      <a href="./contact.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">ติดต่อเรา</a>
+      <a href="./admin.html" class="rounded-full px-4 py-1.5 transition hover:bg-slate-100">Admin</a>
+    </nav>
   </div>
+  <div class="mekong-line"></div>
+</header>
+
+<main class="mx-auto max-w-5xl space-y-16 px-4 py-12">
+  <section class="space-y-6">
+    <div class="rounded-3xl border border-slate-200/70 bg-white p-8 shadow-sm">
+      <h1 class="text-3xl font-semibold text-slate-900">รู้จักจังหวัดหนองคาย</h1>
+      <p class="mt-4 text-base leading-relaxed text-slate-600">หนองคายตั้งอยู่ริมฝั่งขวาของแม่น้ำโขง เป็นเมืองหน้าด่านทางภาคอีสานที่รับบทสำคัญตั้งแต่อดีตจนถึงปัจจุบัน ทั้งในเชิงการค้า ความมั่นคง และวัฒนธรรมที่เชื่อมไทย–ลาวเข้าด้วยกัน เมืองมีบรรยากาศสงบเรียบง่าย แต่เต็มไปด้วยแหล่งท่องเที่ยวเชิงศรัทธาและกิจกรรมของชุมชนริมน้ำ</p>
+    </div>
+  </section>
+
+  <section class="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-start">
+    <div class="space-y-6">
+      <h2 class="text-2xl font-semibold text-slate-900">เส้นเวลาประวัติศาสตร์</h2>
+      <div class="space-y-6">
+        <article class="rounded-2xl border border-slate-200/70 bg-white/90 p-6">
+          <h3 class="text-lg font-semibold text-slate-800">พ.ศ. 2364 – กำเนิดเมืองหน้าด่าน</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">สมัยรัชกาลที่ 2 โปรดให้ตั้งเมืองหนองคายเพื่อดูแลหัวเมืองฝั่งซ้ายของแม่น้ำโขง เป็นฐานทัพและศูนย์กลางการค้าที่สำคัญของสยาม</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200/70 bg-white/90 p-6">
+          <h3 class="text-lg font-semibold text-slate-800">พ.ศ. 2436 – ยุคเปลี่ยนผ่านหลังวิกฤต ร.ศ. 112</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">การกำหนดเส้นเขตแดนใหม่ทำให้ฝั่งซ้ายโขงกลายเป็นของฝรั่งเศส แต่หนองคายยังคงรักษาบทบาทเมืองหน้าด่านและแหล่งค้าขายกับลาว</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200/70 bg-white/90 p-6">
+          <h3 class="text-lg font-semibold text-slate-800">พ.ศ. 2484 – ศูนย์กลางราชการจังหวัด</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">รัฐบาลไทยปรับปรุงโครงสร้างการปกครอง หนองคายถูกพัฒนาเป็นศูนย์ราชการและฐานการคมนาคมสำคัญของภาคอีสานตอนบน</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200/70 bg-white/90 p-6">
+          <h3 class="text-lg font-semibold text-slate-800">พ.ศ. 2537 – เปิดสะพานมิตรภาพไทย–ลาว</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">สะพานมิตรภาพไทย–ลาว แห่งที่ 1 เปิดให้บริการ เชื่อมเมืองหนองคายกับนครหลวงเวียงจันทน์ ทำให้การท่องเที่ยวและการค้าคึกคักขึ้นหลายเท่า</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200/70 bg-white/90 p-6">
+          <h3 class="text-lg font-semibold text-slate-800">ปัจจุบัน – เมืองสร้างสรรค์ริมโขง</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">เทศกาลบั้งไฟพญานาค ศิลปะในศาลาแก้วกู่ และถนนคนเดินริมโขงสะท้อนพลังชุมชนที่ยังคงยืนหยัด พร้อมต้อนรับนักเดินทางด้วยความอบอุ่น</p>
+        </article>
+      </div>
+    </div>
+    <aside class="space-y-6 rounded-3xl border border-slate-200/70 bg-white p-8">
+      <h2 class="text-2xl font-semibold text-slate-900">ภาพรวมปัจจุบัน</h2>
+      <dl class="space-y-4 text-sm text-slate-600">
+        <div class="flex items-baseline justify-between">
+          <dt class="font-medium text-slate-700">จำนวนอำเภอ</dt>
+          <dd>9 อำเภอ</dd>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <dt class="font-medium text-slate-700">จุดเด่นท่องเที่ยว</dt>
+          <dd>วัดศักดิ์สิทธิ์, ศาลาแก้วกู่, ถนนคนเดินริมโขง</dd>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <dt class="font-medium text-slate-700">เทศกาลสำคัญ</dt>
+          <dd>ออกพรรษาบั้งไฟพญานาค, งานมหกรรมสายน้ำโขง</dd>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <dt class="font-medium text-slate-700">อาหารแนะนำ</dt>
+          <dd>ส้มตำหลวงพระบาง, หมกปลา, ข้าวจี่</dd>
+        </div>
+      </dl>
+      <div class="rounded-2xl border border-dashed border-teal-200/80 bg-teal-50/60 p-6 text-sm leading-relaxed text-slate-600">
+        แม่น้ำโขงยังคงเป็นเส้นเลือดใหญ่ของจังหวัด ผู้คนใช้ชีวิตผูกกับน้ำ ผ่านตลาดเช้า ตลาดเย็น และวิถีเรือยาวที่ยังเห็นได้ทุกฤดูฝน
+      </div>
+    </aside>
+  </section>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-slate-900">แนวคิดการออกแบบเว็บไซต์</h2>
+    <div class="rounded-3xl border border-slate-200/70 bg-white p-8">
+      <p class="text-sm leading-relaxed text-slate-600">เราเลือกโทนสีอ่อนโยนและลายเส้นเรียบง่ายเพื่อสะท้อนความนิ่งของสายน้ำโขง ขณะเดียวกันเพิ่มจุดกลมเล็กๆ คล้ายเกลียวพญานาคในส่วนต่างๆ เป็นกิมมิกที่เชื่อมโยงตำนานกับการเดินทางยุคใหม่ นักท่องเที่ยวจึงสัมผัสบรรยากาศของจังหวัดตั้งแต่หน้าเว็บไซต์</p>
+    </div>
+  </section>
 </main>
-<footer class="text-center text-xs text-slate-500 py-8">© NongkhaiTravel.com</footer>
-</body></html>
+
+<footer class="border-t border-slate-200/70 bg-white/80 py-8 text-center text-xs text-slate-500">© NongkhaiTravel.com — บันทึกเรื่องราวเมืองหนองคาย</footer>
+</body>
+</html>
