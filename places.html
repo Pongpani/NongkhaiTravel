@@ -22,16 +22,18 @@
 <footer class="text-center text-xs text-slate-500 py-8">© NongkhaiTravel.com</footer>
 <script>
 let places=[];
+const focusDistrict='เมืองหนองคาย';
 async function loadPlaces(){
   const res = await fetch('./data/places.json'); places = await res.json(); render();
 }
 function render(){
   const q=(document.getElementById('q').value||'').trim();
-  const f=places.filter(p => p.name_th.includes(q));
+  const f=places.filter(p => p.district===focusDistrict && p.name_th.includes(q));
   document.getElementById('list').innerHTML = f.map(p => `
     <a href="./place.html?id=${p.id}" class="block bg-white rounded-2xl shadow hover:shadow-md transition p-4">
       <div class="aspect-video bg-slate-200 rounded-xl mb-3 overflow-hidden"><img src="${p.image}" alt="${p.name_th}" class="w-full h-full object-cover"></div>
       <div class="font-semibold">${p.name_th}</div>
+      <div class="text-xs font-semibold text-sky-600 mb-1">อ.${p.district} จังหวัดหนองคาย</div>
       <div class="text-sm text-slate-600 line-clamp-2">${p.desc}</div>
     </a>`).join('');
 }

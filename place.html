@@ -20,6 +20,7 @@
 </main>
 <footer class="text-center text-xs text-slate-500 py-8">© NongkhaiTravel.com</footer>
 <script>
+const focusDistrict='เมืองหนองคาย';
 async function load(){
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
@@ -27,8 +28,13 @@ async function load(){
   const p = places.find(x => x.id===id);
   const el = document.getElementById('content');
   if(!p) { el.innerHTML = '<div>ไม่พบข้อมูล</div>'; return; }
+  if(p.district!==focusDistrict){
+    el.innerHTML = `<div class="text-sm text-slate-600">หน้านี้แนะนำเฉพาะสถานที่ในอำเภอเมืองหนองคาย</div>`;
+    return;
+  }
   el.innerHTML = `
     <h2 class="text-xl font-semibold mb-2">${p.name_th}</h2>
+    <div class="text-xs font-semibold text-sky-600 mb-4">อ.${p.district} จังหวัดหนองคาย</div>
     <div class="aspect-video bg-slate-200 rounded-xl overflow-hidden mb-4">
       <img src="${p.image}" alt="${p.name_th}" class="w-full h-full object-cover">
     </div>

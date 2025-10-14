@@ -1,38 +1,336 @@
-<!doctype html><html lang="th"><head>
+<!doctype html>
+<html lang="th">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NongkhaiTravel.com</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="icon" href="data:,">
+<style>
+  :root { color-scheme: light; }
+  body {
+    background: radial-gradient(circle at 0% 0%, rgba(59,130,246,0.18), transparent 55%),
+                radial-gradient(circle at 100% 0%, rgba(236,72,153,0.18), transparent 55%),
+                linear-gradient(180deg, #f8fbff 0%, #f1f5f9 45%, #e0f2fe 100%);
+  }
+  .glow-card {
+    position: relative;
+    isolation: isolate;
+  }
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1.25rem;
+    padding: 1px;
+    background: linear-gradient(120deg, rgba(59,130,246,0.4), rgba(236,72,153,0.35));
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .glow-card:hover::before {
+    opacity: 1;
+  }
+  .tilt-card {
+    --tiltX: 0deg;
+    --tiltY: 0deg;
+    transform: perspective(1200px) rotateX(var(--tiltX)) rotateY(var(--tiltY));
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .tilt-card:hover {
+    transform: perspective(1200px) rotateX(var(--tiltX)) rotateY(var(--tiltY)) scale(1.01);
+    box-shadow: 0 25px 45px -25px rgba(30,64,175,0.25);
+  }
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .floating-badge {
+    animation: float 12s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: .8; }
+    50% { opacity: 1; }
+  }
+</style>
 </head>
-<body class="bg-sky-50 text-slate-800">
-<header class="bg-white shadow"><div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-  <h1 class="text-xl md:text-2xl font-bold">NongkhaiTravel.com</h1>
-  <nav class="space-x-4 text-sm">
-    <a href="./index.html" class="hover:underline">หน้าแรก</a>
-    <a href="./places.html" class="hover:underline">สถานที่ท่องเที่ยว</a>
-    <a href="./about.html" class="hover:underline">เกี่ยวกับจังหวัด</a>
-    <a href="./contact.html" class="hover:underline">ติดต่อเรา</a>
-    <a href="./admin.html" class="hover:underline">Admin</a>
-  </nav>
-</div></header>
-<main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
-  <section class="text-center"><h2 class="text-2xl font-bold">เที่ยวหนองคาย ง่ายในเว็บเดียว</h2>
-    <p class="text-slate-600 mt-2">รวมไฮไลต์สถานที่ท่องเที่ยว แผนที่ และข้อมูลสำคัญสำหรับนักท่องเที่ยว</p>
-  </section>
-  <section><h3 class="text-lg font-semibold mb-3">ไฮไลต์</h3><div id="featured" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div></section>
-</main>
-<footer class="text-center text-xs text-slate-500 py-8">© NongkhaiTravel.com</footer>
+<body class="min-h-screen text-slate-800">
+<div class="pointer-events-none fixed inset-0 overflow-hidden">
+  <div class="absolute -top-36 -left-32 h-72 w-72 rounded-full bg-sky-200/70 blur-3xl" style="animation: pulse-soft 14s ease-in-out infinite;"></div>
+  <div class="absolute top-20 -right-24 h-80 w-80 rounded-full bg-pink-200/60 blur-3xl" style="animation: pulse-soft 18s ease-in-out infinite reverse;"></div>
+</div>
+<div class="relative z-10 flex min-h-screen flex-col">
+  <header class="sticky top-0 z-20 bg-white/80 shadow backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <a href="./index.html" class="text-lg font-semibold tracking-tight text-sky-700 md:text-2xl">NongkhaiTravel.com</a>
+      <nav class="hidden items-center gap-4 text-sm font-medium text-slate-600 sm:flex">
+        <a href="./index.html" class="rounded-full px-3 py-1 transition hover:bg-sky-100">หน้าแรก</a>
+        <a href="./places.html" class="rounded-full px-3 py-1 transition hover:bg-sky-100">สถานที่ท่องเที่ยว</a>
+        <a href="./about.html" class="rounded-full px-3 py-1 transition hover:bg-sky-100">เกี่ยวกับจังหวัด</a>
+        <a href="./contact.html" class="rounded-full px-3 py-1 transition hover:bg-sky-100">ติดต่อเรา</a>
+        <a href="./admin.html" class="rounded-full px-3 py-1 transition hover:bg-sky-100">Admin</a>
+      </nav>
+      <button id="menuBtn" class="inline-flex items-center justify-center rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-600 shadow-sm transition hover:border-sky-200 hover:text-sky-600 sm:hidden">เมนู</button>
+    </div>
+    <div id="mobileNav" class="hidden border-t border-slate-100 bg-white/90 px-4 pb-4 pt-2 text-sm text-slate-600 sm:hidden">
+      <a class="block rounded-lg px-3 py-2 transition hover:bg-sky-100" href="./index.html">หน้าแรก</a>
+      <a class="block rounded-lg px-3 py-2 transition hover:bg-sky-100" href="./places.html">สถานที่ท่องเที่ยว</a>
+      <a class="block rounded-lg px-3 py-2 transition hover:bg-sky-100" href="./about.html">เกี่ยวกับจังหวัด</a>
+      <a class="block rounded-lg px-3 py-2 transition hover:bg-sky-100" href="./contact.html">ติดต่อเรา</a>
+      <a class="block rounded-lg px-3 py-2 transition hover:bg-sky-100" href="./admin.html">Admin</a>
+    </div>
+  </header>
+
+  <main class="relative flex-1 pb-16">
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-white/90 via-sky-50/70 to-sky-100/60"></div>
+      <div class="relative mx-auto flex max-w-6xl flex-col gap-14 px-4 pb-20 pt-16 md:flex-row md:items-center">
+        <div class="relative flex-1 space-y-6 text-center md:text-left">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-sky-600 shadow-sm backdrop-blur">
+            Mueang Nong Khai
+          </span>
+          <h1 class="text-3xl font-bold leading-tight text-slate-800 md:text-5xl">
+            รวมมุมห้ามพลาดในอำเภอเมืองหนองคาย
+          </h1>
+          <p class="text-base text-slate-600 md:text-lg">
+            ค้นพบแลนด์มาร์กริมโขง วัดสำคัญ และย่านชุมชนสร้างสรรค์ใจกลางเมืองหนองคาย พร้อมเกร็ดเล็กๆ สำหรับการเดินเที่ยวแบบชิลล์
+          </p>
+          <div class="flex flex-col items-center gap-3 sm:flex-row md:items-start">
+            <a href="./places.html" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-200 transition hover:scale-[1.02]">
+              สำรวจสถานที่<br class="hidden sm:block">ในอำเภอเมือง
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 01-.001 1.414l-5 5a1 1 0 11-1.414-1.414L12.586 11H4a1 1 0 110-2h8.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a href="#highlight" class="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-5 py-3 text-sm font-semibold text-sky-700 shadow-sm transition hover:border-sky-300">
+              ดูไฮไลต์ล่าสุด
+            </a>
+          </div>
+          <div class="grid grid-cols-2 gap-4 pt-6 text-left sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
+              <div class="text-2xl font-bold text-sky-600">30+</div>
+              <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">จุดเที่ยวและกิจกรรม</div>
+            </div>
+            <div class="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
+              <div class="text-2xl font-bold text-sky-600">12</div>
+              <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">เทศกาลประจำปี</div>
+            </div>
+            <div class="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur sm:col-span-1">
+              <div class="text-2xl font-bold text-sky-600">100%</div>
+              <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">พร้อมแผนที่นำทาง</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative flex flex-1 items-center justify-center">
+          <div class="absolute -left-6 -top-8 hidden h-16 w-16 rounded-full bg-white/70 shadow-lg backdrop-blur md:block floating-badge"></div>
+          <div class="absolute -right-8 bottom-4 hidden h-24 w-24 rounded-3xl border border-sky-200/80 bg-white/50 p-4 shadow-lg backdrop-blur md:block floating-badge" style="animation-delay: -4s;">
+            <div class="text-xs font-semibold text-slate-500">ช่วงเวลาน่าเที่ยว</div>
+            <div class="mt-1 text-lg font-bold text-slate-700">พ.ย. - ก.พ.</div>
+            <div class="text-[11px] text-slate-500">ลุ้นทะเลหมอก</div>
+          </div>
+          <div class="relative w-full max-w-md space-y-4 rounded-[2rem] border border-white/80 bg-white/90 p-6 shadow-xl backdrop-blur">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-sm font-semibold text-slate-500">โฟกัสวันนี้</div>
+                <div class="text-lg font-bold text-slate-700">จุดเด่นย่านเมืองหนองคาย</div>
+              </div>
+              <span class="rounded-full bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-600">LOCAL PICKS</span>
+            </div>
+            <div class="rounded-2xl bg-sky-50/70 p-4 text-sm text-slate-600">
+              <p class="font-semibold text-slate-700">วัดโพธิ์ชัย</p>
+              <p class="mt-1 text-xs text-slate-500">กราบหลวงพ่อพระใสองค์ศักดิ์สิทธิ์ เดินชมงานศิลป์อีสานในพระอุโบสถ</p>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-4 text-sm text-slate-600 shadow-sm">
+              <p class="font-semibold text-slate-700">ศาลาแก้วกู่</p>
+              <p class="mt-1 text-xs text-slate-500">สำรวจสวนประติมากรรมยักษ์สไตล์หลวงปู่บุญ เหมาะกับการถ่ายภาพแนวอาร์ต</p>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-4 text-sm text-slate-600 shadow-sm">
+              <p class="font-semibold text-slate-700">ถนนคนเดินริมโขง</p>
+              <p class="mt-1 text-xs text-slate-500">เก็บบรรยากาศริมน้ำช่วงเย็น ชิมสตรีทฟู้ดและชมการแสดงท้องถิ่น</p>
+            </div>
+            <div class="rounded-2xl border border-sky-100 bg-white/70 p-4 text-xs font-medium text-sky-700">
+              <p>ทุกสถานที่อยู่ในรัศมีตัวเมือง เดินทางต่อกันง่าย เหมาะสำหรับครึ่งวันถึงหนึ่งวันแบบสบายๆ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="highlight" class="relative mx-auto mt-12 max-w-6xl space-y-8 px-4">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-800">ไฮไลต์สถานที่ในอำเภอเมืองหนองคาย</h2>
+          <p class="text-slate-600">คัดสรรแลนด์มาร์กและมุมชิลล์ที่อยู่ในย่านตัวเมือง เดินทางสะดวก</p>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-slate-500">
+          <span class="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 shadow-sm backdrop-blur">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
+            </span>
+            อัปเดตอัตโนมัติจากฐานข้อมูล
+          </span>
+        </div>
+      </div>
+      <div id="featured" class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <section class="mx-auto mt-16 max-w-6xl px-4">
+      <div class="glow-card rounded-3xl bg-white/80 p-8 shadow-xl backdrop-blur">
+        <div class="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold text-slate-800">แพลนเดินเที่ยว 1 วันในตัวเมือง</h3>
+            <p class="text-slate-600">เรียงลำดับเส้นทางท่องเที่ยวให้ครอบคลุมวัด ย่านชุมชน และวิวแม่น้ำโขงภายในระยะเวลาไม่นาน</p>
+            <div class="grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-100 bg-white/70 p-4">
+                <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">เช้า</div>
+                <div class="mt-1 font-semibold text-slate-800">เริ่มที่วัดโพธิ์ชัย</div>
+                <p class="mt-2 text-xs text-slate-500">ใส่บาตรหน้าวัด ยลพระพุทธรูปองค์สำคัญ และชมสถาปัตยกรรมแบบผสม</p>
+              </div>
+              <div class="rounded-2xl border border-slate-100 bg-white/70 p-4">
+                <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">กลางวัน</div>
+                <div class="mt-1 font-semibold text-slate-800">เดินพิพิธภัณฑ์จังหวัด</div>
+                <p class="mt-2 text-xs text-slate-500">แวะพิพิธภัณฑ์สัตว์น้ำหนองคาย หรือบ้านหลวงพิบูลย์ฯ เพื่อเข้าใจรากเหง้าชุมชน</p>
+              </div>
+              <div class="rounded-2xl border border-slate-100 bg-white/70 p-4">
+                <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">บ่าย</div>
+                <div class="mt-1 font-semibold text-slate-800">สำรวจศาลาแก้วกู่</div>
+                <p class="mt-2 text-xs text-slate-500">เดินชมประติมากรรมยักษ์และเรียนรู้เรื่องราวความเชื่อผสมผสาน</p>
+              </div>
+              <div class="rounded-2xl border border-slate-100 bg-white/70 p-4">
+                <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">เย็น</div>
+                <div class="mt-1 font-semibold text-slate-800">ปิดท้ายที่ถนนคนเดิน</div>
+                <p class="mt-2 text-xs text-slate-500">เดินเล่นรับลมริมโขง ชิมของกินพื้นถิ่น และซื้อของฝากจากร้านชุมชน</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative overflow-hidden rounded-[2rem] border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-indigo-50 p-6 shadow-lg">
+            <div class="absolute right-4 top-4 h-24 w-24 rounded-full bg-sky-200/60 blur-2xl"></div>
+            <div class="relative space-y-4 text-slate-700">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-semibold text-slate-500">Smart Tips</span>
+                <span class="rounded-full bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-600">LOCAL</span>
+              </div>
+              <div class="space-y-3 text-sm">
+                <div class="rounded-2xl bg-white/80 p-4 shadow-sm">
+                  <div class="font-semibold text-slate-800">วางแผนช่วงเวลา</div>
+                  <p class="text-xs text-slate-500">วัดโพธิ์ชัยเปิดตั้งแต่เช้ามืด ส่วนศาลาแก้วกู่ควรเผื่อเวลาชมงานละเอียดประมาณ 1 ชั่วโมง</p>
+                </div>
+                <div class="rounded-2xl bg-white/80 p-4 shadow-sm">
+                  <div class="font-semibold text-slate-800">ปั่นจักรยานเที่ยวเมือง</div>
+                  <p class="text-xs text-slate-500">มีบริการเช่าจักรยานใกล้ลานวัฒนธรรมวัดลำดวน ปั่นต่อไปยังถนนคนเดินได้สะดวก</p>
+                </div>
+                <div class="rounded-2xl bg-white/80 p-4 shadow-sm">
+                  <div class="font-semibold text-slate-800">จอดรถริมโขง</div>
+                  <p class="text-xs text-slate-500">ช่วงเย็นมีพื้นที่จอดรถสาธารณะใกล้ตลาดท่าเสด็จ เหมาะกับการเดินต่อไปชมวิวแม่น้ำ</p>
+                </div>
+              </div>
+              <a href="./about.html" class="inline-flex items-center gap-2 rounded-full bg-sky-500/90 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-sky-600">
+                รู้จักเมืองหนองคายให้ลึกขึ้น
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 3.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 9H7a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-auto bg-white/70 py-8 text-center text-xs text-slate-500 backdrop-blur">
+    © NongkhaiTravel.com — คู่มือเที่ยวเมืองหนองคายอย่างครบถ้วน
+  </footer>
+</div>
+
 <script>
-async function loadFeatured(){
-  const res = await fetch('./data/places.json'); const places = await res.json();
-  const pick = places.slice(0,6); const el = document.getElementById('featured');
-  el.innerHTML = pick.map(p => `
-    <a href="./place.html?id=${p.id}" class="block bg-white rounded-2xl shadow hover:shadow-md transition p-4">
-      <div class="aspect-video bg-slate-200 rounded-xl mb-3 overflow-hidden"><img src="${p.image}" alt="${p.name_th}" class="w-full h-full object-cover"></div>
-      <div class="font-semibold">${p.name_th}</div>
-      <div class="text-sm text-slate-600 line-clamp-2">${p.desc}</div>
-    </a>`).join('');
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+if (menuBtn && mobileNav) {
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+  });
 }
+
+async function loadFeatured() {
+  try {
+    const res = await fetch('./data/places.json');
+    const places = await res.json();
+    const focusDistrict = 'เมืองหนองคาย';
+    const pick = places.filter(p => p.district === focusDistrict).slice(0, 6);
+    const el = document.getElementById('featured');
+    el.innerHTML = pick.map(p => `
+      <a href="./place.html?id=${p.id}" class="glow-card fade-up block overflow-hidden rounded-3xl bg-white/80 p-4 shadow-lg backdrop-blur transition hover:-translate-y-1">
+        <div class="tilt-wrapper relative overflow-hidden rounded-2xl">
+          <div class="tilt-card aspect-video w-full overflow-hidden rounded-2xl bg-slate-200">
+            <img src="${p.image}" alt="${p.name_th}" class="h-full w-full object-cover" loading="lazy" />
+          </div>
+          <span class="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-sky-700 shadow">
+            ดูรายละเอียด
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 01-.001 1.414l-5 5a1 1 0 11-1.414-1.414L12.586 11H4a1 1 0 110-2h8.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </span>
+        </div>
+        <div class="mt-4 space-y-2">
+          <div class="text-lg font-semibold text-slate-800">${p.name_th}</div>
+          <div class="text-xs font-semibold text-sky-600">อ.${p.district} จังหวัดหนองคาย</div>
+          <p class="text-sm text-slate-600">${p.desc}</p>
+        </div>
+      </a>
+    `).join('');
+    setTimeout(() => setupAnimations(), 30);
+  } catch (error) {
+    console.error('ไม่สามารถโหลดข้อมูลสถานที่ได้', error);
+  }
+}
+
+function setupAnimations() {
+  const cards = document.querySelectorAll('.tilt-wrapper');
+  cards.forEach(card => {
+    const tiltTarget = card.querySelector('.tilt-card');
+    if (!tiltTarget) return;
+    card.addEventListener('mousemove', event => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const rotateX = ((y / rect.height) - 0.5) * -12;
+      const rotateY = ((x / rect.width) - 0.5) * 12;
+      tiltTarget.style.setProperty('--tiltX', rotateX.toFixed(2) + 'deg');
+      tiltTarget.style.setProperty('--tiltY', rotateY.toFixed(2) + 'deg');
+    });
+    card.addEventListener('mouseleave', () => {
+      tiltTarget.style.setProperty('--tiltX', '0deg');
+      tiltTarget.style.setProperty('--tiltY', '0deg');
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
 loadFeatured();
-</script></body></html>
+</script>
+</body>
+</html>
